@@ -165,19 +165,27 @@ def minimax(board):
         return None
 
     play = player(board)
-    act = actions(board)
-    best_options = []
-
-    for action in act:
-        if play == 'X':
-            v = max_value(board)
-        elif play == 'O':
-            v = min_value(board)
-
-        best_options.append( (v, action) )
 
     if play == 'X':
-        return max(best_options)[1]
-    elif play == 'O':
-        return min(best_options)[1]
+        if board == initial_state():
+            return (1, 0)
 
+        moves = []
+
+        for action in actions(board):
+            moves.append( (min_value(result(board, action)), action) )
+
+        moves.sort()
+        moves.reverse()
+
+        return moves[0][1]
+
+    elif play == 'O':
+        moves = []
+
+        for action in actions(board):
+            moves.append( (max_value(result(board, action)), action) )
+
+        moves.sort()
+
+        return moves[0][1]

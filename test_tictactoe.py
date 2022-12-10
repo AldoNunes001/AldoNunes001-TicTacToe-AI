@@ -190,9 +190,14 @@ class TestTicTacToe:
                  [EMPTY, EMPTY, EMPTY],
                  [EMPTY, EMPTY, 'X']]
 
+        board5 = [['X', EMPTY, EMPTY],
+                 [EMPTY, EMPTY, EMPTY],
+                 [EMPTY, EMPTY, EMPTY]]
+
 
         assert None == ttt.minimax(board1)
         assert (0, 0) == ttt.minimax(board2)
         assert (1, 1) == ttt.minimax(board3)
         assert (1, 1) == ttt.minimax(board4)
+        assert (1, 1) == ttt.minimax(board5)
 
